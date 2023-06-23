@@ -1,0 +1,55 @@
+﻿@model IEnumerable<TurmaViewModel>
+
+<br />
+<br />
+<div class="container p-4 border">
+	<div class="row pb-2">
+		<div class="col">
+			<h1 class="text-primary">Relacionar Turmas</h1>
+		</div>
+		<div class="col text-end pt-1">
+			<a asp-action="CreateRelationship" class="btn btn-outline-primary"><i class="fas fa-plus"></i> Adicionar Relacionamento </a>
+		</div>
+	</div>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>
+					Curso Id
+				</th>
+				<th>
+					Nome
+				</th>
+				<th>
+					Ano
+				</th>
+
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td>
+						@item.Curso_Id
+					</td>
+					<td>
+						@item.Nome
+					</td>
+					<td>
+						@item.Ano
+					</td>
+					<td>
+						<a asp-action="UpdateRelationship" class="btn btn-success" asp-route-id="@item.Id">
+							<i class="fas fa-edit"></i>
+						</a>
+						<a asp-action="ListAluno" class="btn btn-success" asp-route-id="@item.Id">
+							<i class="fas fa-list"> Listar Alunos</i>
+						</a>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>
